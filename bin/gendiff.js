@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { readFileSync } from 'fs';
 import _ from 'lodash';
 import { cwd } from 'process';
 import genDiff from '../src/index.js';
