@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import { readFileSync } from 'fs';
+import path from 'path';
 import buildTree from './buildTree.js';
 import stylish from './stylish.js';
-import path from 'path';
+
 const genDiff = (filepath1, filepath2) => {
   const fixturesPath1 = path.resolve('__fixtures__', filepath1);
   const fixturesPath2 = path.resolve('__fixtures__', filepath2);
