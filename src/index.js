@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { readFileSync } from 'fs';
 import path from 'path';
 import buildTree from './buildTree.js';
