@@ -13,6 +13,8 @@ const stylish = (nodes) => {
       case 'changed': {
         return ` - ${node.key}: ${node.oldValue}\n + ${node.key}: ${node.value}`;
       }
+      default:
+        return null;
     }
   });
 
