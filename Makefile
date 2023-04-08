@@ -15,3 +15,6 @@ dev:
 
 watch:
 	npx nodemon src/index.js
+
+test:
+	npm test
