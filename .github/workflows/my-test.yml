@@ -1,0 +1,14 @@
+name: Test-genDiff
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: all tests
+      - uses: actions/checkout@v3
+      - run: make install
+      - run: make lint
+      - run: make test
