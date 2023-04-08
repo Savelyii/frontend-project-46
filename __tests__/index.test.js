@@ -1,6 +1,6 @@
 import genDiff from '../src/index.js';
 
-test('test genDiff', () => {
+test('function genDiff', () => {
   expect(genDiff('file1.json', 'file2.json')).toEqual(`{
    - follow: false
      host: hexlet.io
