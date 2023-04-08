@@ -6,20 +6,20 @@ const buildTree = (obj1, obj2) => {
   const unionKeys = _.union(keys1, keys2).sort();
   const nodes = unionKeys.map((key) => {
     if (!Object.hasOwn(obj1, key)) {
-      return { key: key, value: obj2[key], type: 'added' };
+      return { key, value: obj2[key], type: 'added' };
     }
     if (!Object.hasOwn(obj2, key)) {
-      return { key: key, value: obj1[key], type: 'deleted' };
+      return { key, value: obj1[key], type: 'deleted' };
     }
     if (obj1[key] !== obj2[key]) {
       return {
-        key: key,
+        key,
         oldValue: obj1[key],
         value: obj2[key],
         type: 'changed',
       };
     }
-    return { key: key, value: obj1[key], type: 'unchanged' };
+    return { key, value: obj1[key], type: 'unchanged' };
   });
 
   return nodes;
