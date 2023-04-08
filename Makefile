@@ -17,4 +17,4 @@ watch:
 	npx nodemon src/index.js
 
 test:
-	npm test
+	NODE_OPTIONS=--experimental-vm-modules npx jest
