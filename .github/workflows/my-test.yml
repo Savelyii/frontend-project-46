@@ -1,5 +1,5 @@
 # Name of workflow
-name: Node CI
+name: my-test
 
 # Trigger the workflow on push or pull request
 on:
@@ -24,7 +24,7 @@ jobs:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v3
         # Step's name
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: my-test
         # Configures the node version used on GitHub-hosted runners
         # https://github.com/actions/setup-node
         uses: actions/setup-node@v3
