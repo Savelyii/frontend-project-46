@@ -16,5 +16,4 @@ const genDiff = (filepath1, filepath2) => {
   const nodes = buildTree(obj1, obj2);
   return stylish(nodes);
 };
-console.log(genDiff('file1.yml', 'file2.yml'));
 export default genDiff;
