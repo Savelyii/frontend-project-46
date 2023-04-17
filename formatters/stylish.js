@@ -1,13 +1,16 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 
-// const stringify = (data) => {
-//   data.map((dat) => {
-//     if (!_.isObject(dat)) {
-//       return `${dat}`;
-//     }
-//     return `${data.key} : ${data.value}`;
-//   });
-// };
+const stringify = (data) => {
+  const iter = (node, acc) => {
+    const keys = _.keys(node);
+    return keys.flatMap((key) => {
+      if (!_.isObject(node[key])) {
+        return `${node[key]} ${acc + 1}`;
+      }
+    });
+  };
+  return iter(data, '').join('\n');
+};
 
 const stylish = (nodes) => {
   const diff = nodes.map((node) => {
