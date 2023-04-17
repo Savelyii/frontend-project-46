@@ -1,3 +1,14 @@
+// import _ from 'lodash';
+
+// const stringify = (data) => {
+//   data.map((dat) => {
+//     if (!_.isObject(dat)) {
+//       return `${dat}`;
+//     }
+//     return `${data.key} : ${data.value}`;
+//   });
+// };
+
 const stylish = (nodes) => {
   const diff = nodes.map((node) => {
     switch (node.type) {
