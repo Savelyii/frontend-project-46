@@ -16,4 +16,5 @@ const genDiff = (filepath1, filepath2) => {
   const nodes = buildTree(obj1, obj2);
   return stylish(nodes);
 };
+console.log(genDiff('file1.json', 'file2.json'));
 export default genDiff;
