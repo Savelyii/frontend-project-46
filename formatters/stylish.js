@@ -1,13 +1,5 @@
 import _ from 'lodash';
-// {
-//   key: 'group1',
-//   type: 'nested',
-//   children: [
-//     { key: 'baz', oldValue: 'bas', value: 'bars', type: 'changed' },
-//     { key: 'foo', value: 'bar', type: 'unchanged' },
-//     { key: 'nest', oldValue: [Object], value: 'str', type: 'changed' }
-//   ]
-// }
+
 const stringify = (node) => {
   if (!_.isObject(node)) {
     return node;
@@ -20,18 +12,6 @@ const stringify = (node) => {
   // console.log(result);
   return `\n${result.join('\n')}\n`;
 };
-
-// const makeString = (value, num = 1) => {
-//   if (!_.isObject(value)) {
-//     return value;
-//   }
-//   const keys = _.keys(value);
-//   const result = keys.map((key) => {
-//     const nestedKey = value[key];
-//     return `${setIndent(num + 1)}  ${key}: ${makeString(nestedKey, num + 1)}`;
-//   });
-//   return `{\n${result.join('\n')}\n  ${setIndent(num)}}`;
-// };
 
 const stylish = (nodes) => {
   const iter = (node, acc = 1) => {
