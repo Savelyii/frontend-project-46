@@ -1,45 +1,43 @@
 import _ from 'lodash';
 
-const stringify = (node) => {
+const getMargin = (num, str = ' ') => str.repeat(num * 4 - 2);
+
+const stringify = (node, acc = 1) => {
   if (!_.isObject(node)) {
     return node;
   }
   const keys = _.keys(node);
   const result = keys.map((key) => {
     const nestedKey = node[key];
-    return `${key}: ${stringify(nestedKey)}`;
+    return `${getMargin(acc + 1)}  ${key}: ${stringify(nestedKey, acc + 1)}`;
   });
-  // console.log(result);
-  return `\n${result.join('\n')}\n`;
+  return `{\n${result.join('\n')}\n  ${getMargin(acc)}}`;
 };
 
 const stylish = (nodes) => {
   const iter = (node, acc = 1) => {
-    // const diff = nodes.map((node) => {
     switch (node.type) {
       case 'nested': {
-        const nestedNodes = node.children.flatMap((child) => iter(child, ' '.repeat(acc + 1)));
-        return `${node.key}: ${nestedNodes.join('\n')}`;
+        const nestedNodes = node.children.flatMap((child) => iter(child, acc + 1));
+        return `${getMargin(acc)}  ${node.key}: {\n${nestedNodes.join('\n')}\n${getMargin(acc)}  }`;
       }
       case 'unchanged': {
-        return `   ${node.key}: ${stringify(node.value)}`;
+        return `${getMargin(acc)} ${node.key}: ${stringify(node.value, acc)}`;
       }
       case 'deleted': {
-        return ` - ${node.key}: ${stringify(node.value)}`;
+        return `${getMargin(acc)}- ${node.key}: ${stringify(node.value, acc)}`;
       }
       case 'added': {
-        return ` + ${node.key}: ${stringify(node.value)}`;
+        return `${getMargin(acc)}+ ${node.key}: ${stringify(node.value, acc)}`;
       }
       case 'changed': {
-        return ` - ${node.key}: ${stringify(node.oldValue)}\n + ${node.key}: ${stringify(node.value)}`;
+        return `${getMargin(acc)}- ${node.key}: ${stringify(node.oldValue, acc)}\n${getMargin(acc)}+ ${node.key}: ${stringify(node.value, acc)}`;
       }
       default:
-        return null;
+        throw new Error('This type is not supported');
     }
   };
   const diff = nodes.map((item) => iter(item, 1));
   return `{\n${diff.join('\n')}\n}`;
-  // return `{\n${diff.join('\n')}gsghshs}`;
-  // return diff;
 };
 export default stylish;
