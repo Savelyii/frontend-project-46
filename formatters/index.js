@@ -9,6 +9,9 @@ const generationFormat = (tree, format) => {
     case 'plain': {
       return plain(tree);
     }
+    case 'json': {
+      return JSON.stringify(tree);
+    }
     default:
       throw new Error(`Format ${format} is not supported`);
   }
