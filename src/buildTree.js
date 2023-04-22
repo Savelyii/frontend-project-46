@@ -27,30 +27,5 @@ const buildTree = (obj1, obj2) => {
 
   return nodes;
 };
-// const result = buildTree(
-//   {
-//     name: 'Vasya',
-//     info: {
-//       age: '45',
-//       location: {
-//         city: 'Moscow',
-//         street: 'Pushkina',
-//         wather: {
-//           rain: true,
-//         },
-//       },
-//     },
-//   },
-//   {
-//     name: 'Petya',
-//     info: {
-//       age: '18',
-//       location: {
-//         city: 'Moscow',
-//         street: 'Arbat',
-//       },
-//     },
-//   }
-// );
-// console.log(JSON.stringify(result, null, 2));
+
 export default buildTree;

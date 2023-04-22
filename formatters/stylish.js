@@ -34,7 +34,7 @@ const stylish = (nodes) => {
         return `${getMargin(acc)}- ${node.key}: ${stringify(node.oldValue, acc)}\n${getMargin(acc)}+ ${node.key}: ${stringify(node.value, acc)}`;
       }
       default:
-        throw new Error('This type is not supported');
+        throw new Error(`This ${node.type} is not supported`);
     }
   };
   const diff = nodes.map((item) => iter(item, 1));
