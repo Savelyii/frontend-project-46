@@ -17,7 +17,7 @@ const plain = (nodes) => {
         return node.children.flatMap((child) => iter(child, `${path}${node.key}.`)).join('\n');
       }
       case 'unchanged': {
-        return '';
+        return [];
       }
       case 'deleted': {
         return `Property '${path}${node.key}' was removed`;
@@ -32,7 +32,7 @@ const plain = (nodes) => {
         throw new Error(`This ${node.type} is not supported`);
     }
   };
-  const diff = nodes.map((node) => iter(node));
+  const diff = nodes.map((node) => iter(node)).filter(Boolean);
   return `${diff.join('\n')}`;
 };
 
