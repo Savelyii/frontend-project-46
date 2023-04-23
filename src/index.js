@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs';
 import path from 'path';
 import buildTree from './buildTree.js';
-import getParse from '../formatters/parsers.js';
+import getParse from './parsers.js';
 import generationFormat from '../formatters/index.js';
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
@@ -16,5 +16,4 @@ const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const nodes = buildTree(obj1, obj2);
   return generationFormat(nodes, formatName);
 };
-// console.log(genDiff('file1.json', 'file2.json'));
 export default genDiff;

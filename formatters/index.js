@@ -3,15 +3,12 @@ import plain from './plain.js';
 
 const generationFormat = (tree, format) => {
   switch (format) {
-    case 'stylish': {
+    case 'stylish':
       return stylish(tree);
-    }
-    case 'plain': {
+    case 'plain':
       return plain(tree);
-    }
-    case 'json': {
+    case 'json':
       return JSON.stringify(tree);
-    }
     default:
       throw new Error(`Format ${format} is not supported`);
   }
