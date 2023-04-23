@@ -6,7 +6,7 @@
   },
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Savelyii/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/Savelyii/frontend-project-46/actions)",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "npx jest"
   },
