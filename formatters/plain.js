@@ -14,7 +14,10 @@ const plain = (nodes) => {
   const iter = (node, path = '') => {
     switch (node.type) {
       case 'nested': {
-        return node.children.flatMap((child) => iter(child, `${path}${node.key}.`)).join('\n');
+        return node.children
+          .flatMap((child) => iter(child, `${path}${node.key}.`))
+          .filter(Boolean)
+          .join('\n');
       }
       case 'unchanged': {
         return null;
@@ -32,7 +35,7 @@ const plain = (nodes) => {
         throw new Error(`This ${node.type} is not supported`);
     }
   };
-  const diff = nodes.map((node) => iter(node)).filter(Boolean);
+  const diff = nodes.map((node) => iter(node));
   return `${diff.join('\n')}`;
 };
 
