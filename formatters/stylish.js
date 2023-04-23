@@ -22,7 +22,7 @@ const stylish = (nodes) => {
         return `${getMargin(acc)}  ${node.key}: {\n${nestedNodes.join('\n')}\n${getMargin(acc)}  }`;
       }
       case 'unchanged': {
-        return `${getMargin(acc)} ${node.key}: ${stringify(node.value, acc)}`;
+        return `${getMargin(acc)}  ${node.key}: ${stringify(node.value, acc)}`;
       }
       case 'deleted': {
         return `${getMargin(acc)}- ${node.key}: ${stringify(node.value, acc)}`;
