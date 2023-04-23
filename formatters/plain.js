@@ -36,7 +36,8 @@ const plain = (nodes) => {
     }
   };
   const diff = nodes.map((node) => iter(node));
-  return `${diff.join('\n')}`;
+  const result = diff.filter(Boolean);
+  return `${result.join('\n')}`;
 };
 
 export default plain;
