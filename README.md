@@ -54,6 +54,10 @@ gendiff -f json <filepath1>, <filepath2>
 
 [![asciicast](https://asciinema.org/a/NoGe9GYnlEpAAhs93H7VFc7zo.svg)](https://asciinema.org/a/NoGe9GYnlEpAAhs93H7VFc7zo)
 
+**Differences between json and yaml files in stylish format by default.**
+
+[![asciicast](https://asciinema.org/a/u2F9rgqBahXDqzffus4kNo5W2.svg)](https://asciinema.org/a/u2F9rgqBahXDqzffus4kNo5W2)
+
 **Differences between plain text json files.**
 
 [![asciicast](https://asciinema.org/a/43b9t6LVfwQmV0eumUws5M69u.svg)](https://asciinema.org/a/43b9t6LVfwQmV0eumUws5M69u)
