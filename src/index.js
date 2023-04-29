@@ -2,7 +2,7 @@ import { readFileSync } from 'fs';
 import path from 'path';
 import buildTree from './buildTree.js';
 import getParse from './parsers.js';
-import generationFormat from '../formatters/index.js';
+import generationFormat from './formatters/index.js';
 
 const genDiff = (filepath1, filepath2, formatName = 'stylish') => {
   const fixturesPath1 = path.resolve('__fixtures__', filepath1);
