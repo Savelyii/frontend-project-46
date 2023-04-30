@@ -13,27 +13,25 @@ const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 const stylishCorrect = readFile('stylishCorrect.txt');
 const plainCorrect = readFile('plainCorrect.txt');
 const jsonCorrect = readFile('jsonCorrect.txt');
+const extensions = ['yml', 'json'];
 
-test.each([
-  [getFixturePath('file1.json'), getFixturePath('file2.json'), stylishCorrect],
-  [getFixturePath('file1.yml'), getFixturePath('file2.yml'), stylishCorrect],
-  [getFixturePath('file1.json'), getFixturePath('file2.yml'), stylishCorrect],
-])('stylishTest', (file1, file2, expected) => {
-  expect(genDiff(file1, file2, 'stylish')).toBe(expected);
+test.each(extensions)('stylishTest', (ext) => {
+  const fileBefore = getFixturePath(`file1.${ext}`);
+  const fileAfter = getFixturePath(`file2.${ext}`);
+
+  expect(genDiff(fileBefore, fileAfter, 'stylish')).toEqual(stylishCorrect);
 });
 
-test.each([
-  [getFixturePath('file1.json'), getFixturePath('file2.json'), plainCorrect],
-  [getFixturePath('file1.yml'), getFixturePath('file2.yml'), plainCorrect],
-  [getFixturePath('file1.json'), getFixturePath('file2.yml'), plainCorrect],
-])('plainTest', (file1, file2, expected) => {
-  expect(genDiff(file1, file2, 'plain')).toBe(expected);
+test.each(extensions)('plainTest', (ext) => {
+  const fileBefore = getFixturePath(`file1.${ext}`);
+  const fileAfter = getFixturePath(`file2.${ext}`);
+
+  expect(genDiff(fileBefore, fileAfter, 'plain')).toEqual(plainCorrect);
 });
 
-test.each([
-  [getFixturePath('file1.json'), getFixturePath('file2.json'), jsonCorrect],
-  [getFixturePath('file1.yml'), getFixturePath('file2.yml'), jsonCorrect],
-  [getFixturePath('file1.json'), getFixturePath('file2.yml'), jsonCorrect],
-])('jsonTest', (file1, file2, expected) => {
-  expect(genDiff(file1, file2, 'json')).toBe(expected);
+test.each(extensions)('jsonTest', (ext) => {
+  const fileBefore = getFixturePath(`file1.${ext}`);
+  const fileAfter = getFixturePath(`file2.${ext}`);
+
+  expect(genDiff(fileBefore, fileAfter, 'json')).toEqual(jsonCorrect);
 });
