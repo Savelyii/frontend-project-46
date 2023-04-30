@@ -14,13 +14,10 @@ const plain = (nodes) => {
   const iter = (node, path = '') => {
     switch (node.type) {
       case 'nested': {
-        return node.children
-          .flatMap((child) => iter(child, `${path}${node.key}.`))
-          .filter(Boolean)
-          .join('\n');
+        return node.children.flatMap((child) => iter(child, `${path}${node.key}.`)).join('\n');
       }
       case 'unchanged': {
-        return null;
+        return [];
       }
       case 'deleted': {
         return `Property '${path}${node.key}' was removed`;
@@ -36,8 +33,7 @@ const plain = (nodes) => {
     }
   };
   const diff = nodes.map((node) => iter(node));
-  const result = diff.filter(Boolean);
-  return `${result.join('\n')}`;
+  return `${diff.join('\n')}`;
 };
 
 export default plain;
